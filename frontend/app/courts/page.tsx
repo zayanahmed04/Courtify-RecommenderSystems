@@ -13,7 +13,7 @@ const ZONES: Record<string, [number, number]> = {
   West:    [24.883, 66.995],
 };
 
-const BUDGETS = [500, 600, 800, 1000, 1200, 1500, 2000, 2500];
+const BUDGETS = [1000, 2000, 3000, 4000, 5000];
 
 function Field({ label, children }: { label: string; children: React.ReactNode }) {
   return (

@@ -22,8 +22,3 @@ node_modules/
 .next/
 *.log
 .DS_Store
-node_modules/
-.next/
-__pycache__/
-.pytest_cache/
-venv/

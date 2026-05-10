@@ -23,7 +23,7 @@ export interface CourtSearchResponse {
   recommendations: CourtResult[];
 }
 
-export interface MatchPayload {
+export interface PlayerMatchPayload {
   skill_level: number;
   preferred_sport: string;
   play_style: string;
@@ -42,23 +42,35 @@ export interface MatchPrediction {
   recommendation: string;
 }
 
-async function apiFetch<T>(path: string, body: unknown): Promise<T> {
-  const res = await fetch(`${API_URL}${path}`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(body),
-  });
+export interface HealthResponse {
+  status: string;
+  service: string;
+  version: string;
+  model_ready: boolean;
+}
 
+async function apiFetch<T>(path: string, options?: RequestInit): Promise<T> {
+  const res = await fetch(`${API_URL}${path}`, {
+    headers: { "Content-Type": "application/json" },
+    ...options,
+  });
   if (!res.ok) {
     const err = await res.json().catch(() => ({ detail: res.statusText }));
     throw new Error(err.detail ?? `API error ${res.status}`);
   }
-
   return res.json() as Promise<T>;
 }
 
 export const searchCourts = (payload: CourtSearchPayload) =>
-  apiFetch<CourtSearchResponse>("/courts/search", payload);
+  apiFetch<CourtSearchResponse>("/courts/search", {
+    method: "POST",
+    body: JSON.stringify(payload),
+  });
 
-export const predictMatch = (payload: MatchPayload) =>
-  apiFetch<MatchPrediction>("/matchmaking/predict", payload);
+export const predictMatch = (payload: PlayerMatchPayload) =>
+  apiFetch<MatchPrediction>("/matchmaking/predict", {
+    method: "POST",
+    body: JSON.stringify(payload),
+  });
+
+export const getHealth = () => apiFetch<HealthResponse>("/health");

@@ -2,40 +2,33 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --brand-50:  #E1F5EE;
-  --brand-100: #9FE1CB;
-  --brand-400: #1D9E75;
-  --brand-600: #0F6E56;
-  --brand-800: #085041;
-}
-
-* { box-sizing: border-box; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-  background: #f8faf9;
+  background: #f5f7f6;
   color: #1a1a1a;
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  min-height: 100vh;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
 
-.card {
+select, input[type=number] {
+  width: 100%;
+  padding: 9px 12px;
+  border: 1px solid #dde3e0;
+  border-radius: 8px;
+  font-size: 14px;
   background: #fff;
-  border: 1px solid #e8ede9;
-  border-radius: 14px;
-  padding: 1.5rem;
+  color: #1a1a1a;
+  outline: none;
+  transition: border-color 0.12s;
+  font-family: inherit;
 }
-
-.badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  font-size: 11px;
-  font-weight: 500;
-  padding: 3px 10px;
-  border-radius: 20px;
+select:focus, input[type=number]:focus {
+  border-color: #0F6E56;
 }
 
 input[type=range] {
@@ -43,15 +36,25 @@ input[type=range] {
   width: 100%;
   height: 4px;
   border-radius: 2px;
-  background: #d1e8de;
+  background: #d4e8df;
   outline: none;
+  cursor: pointer;
 }
 input[type=range]::-webkit-slider-thumb {
   -webkit-appearance: none;
-  width: 18px; height: 18px;
+  width: 16px; height: 16px;
   border-radius: 50%;
   background: #0F6E56;
   cursor: pointer;
   border: 2px solid #fff;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+label {
+  display: block;
+  font-size: 12px;
+  font-weight: 500;
+  color: #555;
+  margin-bottom: 6px;
+  letter-spacing: 0.1px;
 }

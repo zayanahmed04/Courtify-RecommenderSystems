@@ -42,13 +42,6 @@ export interface MatchPrediction {
   recommendation: string;
 }
 
-export interface HealthResponse {
-  status: string;
-  service: string;
-  version: string;
-  model_ready: boolean;
-}
-
 async function apiFetch<T>(path: string, options?: RequestInit): Promise<T> {
   const res = await fetch(`${API_URL}${path}`, {
     headers: { "Content-Type": "application/json" },
@@ -72,5 +65,3 @@ export const predictMatch = (payload: PlayerMatchPayload) =>
     method: "POST",
     body: JSON.stringify(payload),
   });
-
-export const getHealth = () => apiFetch<HealthResponse>("/health");

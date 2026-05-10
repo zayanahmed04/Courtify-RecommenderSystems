@@ -3,8 +3,8 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 
 export const metadata: Metadata = {
-  title: "CourtFind AI",
-  description: "AI-powered sports court discovery and player matchmaking for Karachi",
+  title: "CourtFind",
+  description: "Sports court discovery and player matchmaking for Karachi",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -12,7 +12,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <body>
         <Navbar />
-        <main className="max-w-4xl mx-auto px-4 py-8">
+        <main style={{ maxWidth: 960, margin: "0 auto", padding: "32px 24px" }}>
           {children}
         </main>
       </body>
